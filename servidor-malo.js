@@ -12,9 +12,8 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.url === "/info") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end("Ruta de información");
-    return
+    res.json(200, { Mensaje: "Hola", Curso: "Hola", Tecnologia: "Hola" });
+    return;
   }
 
   if (req.url === "/api/student") {
