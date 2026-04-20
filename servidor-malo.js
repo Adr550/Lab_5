@@ -12,7 +12,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.url === "/info") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(404, { "Content-Type": "application/json" });
     res.end("Ruta de información");
     return
   }
@@ -25,7 +25,7 @@ const server = http.createServer(async (req, res) => {
     return
   }
 
-  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.writeHead(404, { "Content-Type": "text/plain" });
   res.end("Ruta no encontrada");
 })
 
