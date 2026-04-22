@@ -12,15 +12,32 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.url === "/info") {
-    res.json(200, { Mensaje: "Hola", Curso: "Hola", Tecnologia: "Hola" });
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({
+      Mensaje: "Hola",
+      Curso: "Node.js",
+      Tecnologia: "JavaScript"
+    }));
     return;
   }
+
+
 
   if (req.url === "/api/student") {
     const filePath = path.join(process.cwd(), "datos.json");
     const texto = await fs.readFile(filePath, "utf-8");
-    res.json(200, { Ok: "Ok", Status: "Status", Puerto: "Hola" });
-    res.end(JSON.stringify(texto));
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(texto);
+    return
+  }
+
+  if (req.url === "/api/status") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({
+      Ok: true,
+      Status: "Activo",
+      Puerto: PORT
+    }));
     return
   }
 
